@@ -60,7 +60,9 @@ struct metadata
 
 		} file;
 		struct {
-
+			uint64_t orig_length;
+			uint64_t block_count;
+			uint32_t block_size;
 		} key;
 		struct {
 
