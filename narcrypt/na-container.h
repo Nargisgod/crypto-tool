@@ -1,7 +1,7 @@
 /*
  * na-container.h
  *
- *  Created on: 22 сент. 2021 г.
+ *  Created on: 22 СЃРµРЅС‚. 2021 Рі.
  *      Author: Sergey
  */
 
@@ -24,10 +24,15 @@ enum payload_type
 {
 	RAW = 0,
 	KEY_DATA,
-	PRIVATE_KEY,
-	PUBLIC_KEY,
 	ENCRYPTED_DATA,
 	DH_PARAMS,
+};
+enum crypt_type
+{
+	RAW_CRYPT = 0,
+	ECB_CRYPT,
+	CBC_CRYPT,
+	CTR_CRYPT
 };
 
 constexpr uint32_t HEADER_SIZE_V1 = 12;
@@ -43,7 +48,8 @@ struct header
 	union {
 		struct {
 			uint8_t payload;
-			uint8_t padding[3];
+			uint8_t crypt;
+			uint8_t padding[2];
 		} v1;
 	};
 };
